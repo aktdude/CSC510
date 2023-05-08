@@ -1,0 +1,150 @@
+<div class="col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded">
+    <ul class="nav nav-tabs" id="tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#roster" role="tab" aria-controls="roster"
+               aria-selected="true">Roster</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#assignments" role="tab"
+               aria-controls="assignments"
+               aria-selected="false">Assignments</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
+               aria-selected="false">Class Information</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabsContent">
+        <!--Roster tab begins here-->
+        <div class="tab-pane fade show active" id="roster" role="tabpanel" aria-labelledby="roster-tab">
+            <div class="form-title">Class Roster</div>
+            <br>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Student Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let res of users; index as i">
+                    <td>{{i + 1}}</td>
+                    <td>{{res.name}}</td>
+                    <td>{{res.email}}</td>
+                </tbody>
+            </table>
+            <div *ngIf='emptyRoster'>Roster is Empty</div>
+        </div>
+        <!--Assignments tab begins here-->
+        <div class="tab-pane fade" id="assignments" role="tabpanel" aria-labelledby="assignments-tab">
+            <div class="example" style="text-align: left">
+                <h5 style="font-weight: bold">Assignments Coming Soon!</h5>
+                <h5 style="font-weight: bold">Assignment #1: Example Assignment</h5>
+                <p style="font-size: 18px">
+                    Welcome to your final project for C and Software Tools! Your task is to create a
+                    self-driving car using assembly language. This project will require you to draw on all of the skills
+                    you've learned throughout the course, including programming, machine learning, and robotics.
+                    <br>
+                    <br>
+                    Your self-driving car must be able to navigate a pre-defined course without any human intervention.
+                    The car should be able to detect obstacles, stop at red lights, and follow the rules of the road.
+                    You are free to choose the specific sensors and actuators you use to build your car, but keep in
+                    mind that you will be graded on the effectiveness of your design.
+                    <br>
+                    <br>
+                    To complete this project, you will need to work in teams of 2-3. You will have 3 weeks to complete
+                    your self-driving car. During this time, you will be expected to submit regular progress reports,
+                    detailing your team's progress and any challenges you've encountered along the way. Your final
+                    submission will consist of a demonstration of your self-driving car in action, along with a detailed
+                    technical report outlining your design choices and the algorithms you used to create your
+                    self-driving system.
+                    <br>
+                    <br>
+                    In addition to the demonstration and technical report, each team member is required to submit a
+                    10-page essay explaining their individual contribution to the project. This essay should include an
+                    overview of the design process, details on the specific programming and machine learning techniques
+                    used, and a reflection on what you learned throughout the project.
+                    <br>
+                    <br>
+                    Please note that you will need to submit both a physical and digital copy of your self-driving car
+                    for grading. We will schedule a time for your team to bring your car to campus and demonstrate it in
+                    person. Additionally, your technical report and individual essays should be uploaded in a PDF format
+                    using the input form provided below.
+                    <br>
+                    <br>
+                    We encourage you to be creative and ambitious in your design, but remember to prioritize safety and
+                    reliability in your self-driving car. Good luck, and have fun building your self-driving car!
+                    <br>
+                    <br>
+                    <strong>Due Date: 4/20/23</strong>
+                    <br>
+                </p>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                               aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01" style="text-align: left">Choose a File
+                            to
+                            Upload</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Details tab begins here-->
+        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+            <div class="form-title">Class Information</div>
+            <br>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Course Name</th>
+                    <th>{{courseDetail[0].course_name}}</th>
+                </tr>
+                <tr>
+                    <th>Course Term</th>
+                    <th>{{courseDetail[0].course_term}}</th>
+                </tr>
+                <tr>
+                    <th>Credits</th>
+                    <th>{{courseDetail[0].credits}}</th>
+                </tr>
+                <tr>
+                    <th>Department</th>
+                    <th>{{courseDetail[0].department}}</th>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <th>{{courseDetail[0].description}}</th>
+                </tr>
+                <tr>
+                    <th>Max Seats</th>
+                    <th>{{courseDetail[0].max_seats}}</th>
+                </tr>
+                <tr>
+                    <th>Professor ID</th>
+                    <th>{{courseDetail[0].professor_id}}</th>
+                </tr>
+                <tr>
+                    <th>Days of the Week</th>
+                    <th>{{courseDetail[0].days_of_the_week}}</th>
+                </tr>
+                <tr>
+                    <th>Class Times</th>
+                    <th>{{courseDetail[0].class_times}}</th>
+                </tr>
+                <tr>
+                    <th>Teaching Method</th>
+                    <th>{{courseDetail[0].teaching_method}}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

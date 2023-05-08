@@ -1,0 +1,33 @@
+.buttons {
+    text-align: center;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: bolder;
+    color: white;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.title {
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.form-title {
+    font-weight: bolder;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.course-form {
+    font-weight: bold;
+    padding-top: 15px;
+    text-align: left;
+}
+
+.row {
+    padding-left: 15px;
+}

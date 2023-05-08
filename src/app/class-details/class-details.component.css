@@ -1,0 +1,21 @@
+body {
+    margin: 2rem;
+}
+
+.tab-pane {
+    padding: 2rem 0;
+}
+
+.nav-link.active {
+    font-weight: bolder;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.form-title {
+    font-weight: bolder;
+    padding-top: 5px;
+    font-size: 24px;
+}

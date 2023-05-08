@@ -1,0 +1,101 @@
+<div class="container">
+    <br>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded">
+            <div class="card-body text-center">
+                <h3 id="bb" style="display:none" class="card-text">Upload from Database</h3>
+                <h3 id="aa" class="card-text" style="font-weight: bolder">Welcome, {{teacher_name}}</h3>
+
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Credits</th>
+                        <th scope="col">Professor Id</th>
+                        <th scope="col">View Class Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let res of results; index as i">
+                        <td>{{i + 1}}</td>
+                        <td>{{res.course_name}}</td>
+                        <td>{{res.credits}}</td>
+                        <td>{{res.professor_id}}</td>
+                        <button class="btn btn-primary mt-1" id='class-details-{{i}}' type='submit' value='class_list'
+                                name="authenticate" (click)='toggleShowDetails(res.id)'>
+                            Details
+                        </button>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button disabled class="btn" id='close' type='button' name="close"
+            (click)='close()' style="background-color: dodgerblue">
+        Hide Class Details
+    </button>
+    <div *ngIf="showCourseDetails">
+        <app-class-details [classId]="course_id"></app-class-details>
+    </div>
+    <button *ngIf="showCourseDetails" class="btn mt-1" id='addStudent' type='button' name="addStudent"
+            (click)='showAdd()' style="background-color: mediumpurple">
+        Add Student
+    </button>
+    <br>
+    <div class="col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded" *ngIf="addStudentBool">
+        <div class="card-body text-center">
+            <!-- Search Bar (does not work) -->
+            <div class="form-title">Add Student</div>
+            <br>
+            <input type="text" class=form-control name="search" id="search"
+                   placeholder="Search for a Student.">
+            <br>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr class="text">
+                    <th scope="col">#</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Add?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let result of available; index as i">
+                    <td>{{i + 1}}</td>
+                    <td>{{result.name}}</td>
+                    <td><input type="checkbox"
+                               name="add"
+                               id="student-row-{i}"
+                               [(ngModel)]="result.isSelected"
+                               (change)="addStudent(result.isSelected, result.id)">
+                    </td>
+                </tbody>
+            </table>
+        </div>
+        <div class=form-buttons>
+            <!-- Submit Button -->
+            <button type="submit"
+                    class="btn btn-primary"
+                    id="add-student-button"
+                    (click)="submitEnroll()">
+                Add Selected to Class?</button>
+            <br>
+            <br>
+            <!-- Cancel Button -->
+            <button type="button" class="btn" (click)='refresh()' style="background-color: gray">
+                Back
+            </button>
+            <!-- Success Message -->
+            <div class="col-xs-12" *ngIf="showMsg">
+                <br>
+                <p class="alert alert-success"
+                id="add-student-confirmation-message">
+                    Student Successfully Added!
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

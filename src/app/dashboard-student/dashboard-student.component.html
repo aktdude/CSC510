@@ -1,0 +1,171 @@
+<!--2 cat card views-->
+<div class='container'>
+    <br>
+    <div class='row justify-content-center'>
+        <div class='col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded'>
+            <div class='card-body text-center'>
+                <h3 id='bb' style='display:none' class='card-text'>Upload from Database</h3>
+                <h3 id='aa' class='card-text' style='font-weight: bolder'>Welcome, {{student_name}} </h3>
+
+                <table class='table table-striped'>
+                    <thead class='thead-dark'>
+                    <tr>
+                        <th scope='col'>#</th>
+                        <th scope='col'>Course Name</th>
+                        <th scope='col'>Professor</th>
+                        <th scope='col'>Credits</th>
+                        <th scope='col'>Days of the Week</th>
+                        <th scope='col'>Class Time</th>
+                        <th scope='col'>View Class Details</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor='let res of results; index as i'>
+                        <td>{{i + 1}}</td>
+                        <td>{{res.course_name}}</td>
+                        <td>{{res.professor_id}}</td>
+                        <td>{{res.credits}}</td>
+                        <td>{{res.days_of_the_week}}</td>
+                        <td>{{res.class_times}}</td>
+                        <button class='btn btn-primary mt-1' id='class-details-{{i}}' type='submit' value='class_list'
+                                name='authenticate' (click)='toggleShowDetails(res.course_id)'>
+                            Details
+                        </button>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class='buttons'>
+        <!-- Add the links for Add and Drop later -->
+        <button type='button' class='btn btn-xs' id='add' style='background-color: cornflowerblue'
+                (click)='toggleShowAdd()'>
+            Enroll in a Class
+        </button>
+
+        <button type='button' class='btn btn-xs' id='drop' style='background-color: gold' (click)='toggleShowDrop()'>
+            Drop a Class
+        </button>
+    </div>
+    <br>
+    <button disabled class='btn' id='close' type='button' name='close' (click)='close()'
+            style='background-color: seagreen'>
+        Hide Class Details
+    </button>
+    <div *ngIf='showCourseDetails'>
+        <app-class-details [classId]='course_id'></app-class-details>
+    </div>
+    <br>
+    <div class='col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded' *ngIf='addCourse'>
+        <div class='card-body text-center'>
+            <div class='form-title'>Enroll in a Class</div>
+            <br>
+            <!-- Search Bar (does not work) -->
+            <input type='text' class='form-control' name='search' id='search' placeholder='Search for a Student.'>
+            <br>
+            <table class='table table-striped'>
+                <thead class='thead-dark'>
+                <tr class='text'>
+                    <th scope='col'>#</th>
+                    <th scope='col'>Course Name</th>
+                    <th scope='col'>Professor ID</th>
+                    <th scope='col'>Credits</th>
+                    <th scope='col'>Days of the Week</th>
+                    <th scope='col'>Class Time</th>
+                    <th scope='col'>Enroll?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let res of available; index as i'>
+                    <td>{{i + 1}}</td>
+                    <td>{{res.course_name}}</td>
+                    <td>{{res.professor_id}}</td>
+                    <td>{{res.credits}}</td>
+                    <td>{{res.days_of_the_week}}</td>
+                    <td>{{res.class_times}}</td>
+                    <td><input type='checkbox'
+                               name='add'
+                               id='{{res.course_name}}'
+                               [(ngModel)]='res.isSelected'
+                               (change)='enroll(res.isSelected, res.id)'>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+        <div class='form-buttons'>
+            <!-- Submit Button -->
+            <button type='submit' class='btn btn-primary' id='confirm-enrollment' (click)='submitEnroll()'>
+                Enroll Selected Courses?
+            </button>
+            <br>
+            <br>
+            <!-- Cancel Button -->
+            <button type='button' class='btn' (click)='refresh()' style='background-color: gray'>Back
+            </button>
+            <!-- Success Message -->
+            <div class='col-xs-12' *ngIf='showMsg'>
+                <br>
+                <p class='alert alert-success'
+                   id='enrollment-success'>
+                    Successfully Enrolled in the selected Course(s)!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-12 card shadow-lg p-3 mb-5 mt-4 bg-white rounded' *ngIf='dropCourse'>
+        <div class='card-body text-center'>
+            <div class='form-title'>Drop a Class</div>
+            <br>
+            <table class='table table-striped'>
+                <thead class='thead-dark'>
+                <tr class='text'>
+                    <th scope='col'>#</th>
+                    <th scope='col'>Course Name</th>
+                    <th scope='col'>Professor ID</th>
+                    <th scope='col'>Days of the Week</th>
+                    <th scope='col'>Time</th>
+                    <th scope='col'>Drop?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let res of results; index as i'>
+                    <td>{{i + 1}}</td>
+                    <td>{{res.course_name}}</td>
+                    <td>{{res.professor_id}}</td>
+                    <td>{{res.days_of_the_week}}</td>
+                    <td>{{res.class_times}}</td>
+                    <td><input type='checkbox'
+                               name='drop'
+                               id='{{res.course_name}}'
+                               [(ngModel)]='res.isSelected'
+                               (change)='drop(res.isSelected, res.course_id)'/>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+        <div class='form-buttons'>
+            <!-- Submit Button -->
+            <button type='submit'
+                    id="confirm-drop-class"
+                    class='btn btn-primary'
+                    (click)='submitDrop()'>
+                Drop Selected Courses?
+            </button>
+            <br>
+            <br>
+            <!-- Cancel Button -->
+            <button type='button' class='btn' (click)='refresh()' style='background-color: gray'>Back
+            </button>
+            <!-- Success Message -->
+            <div class='col-xs-12' *ngIf='showMsg'>
+                <br>
+                <p class='alert alert-success'
+                id="drop-confirmation-message">
+                    Successfully Dropped the selected Course(s)!
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+</div>

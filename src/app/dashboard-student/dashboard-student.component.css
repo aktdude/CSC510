@@ -1,0 +1,23 @@
+.buttons {
+    text-align: center;
+}
+
+.btn {
+    font-size: 14px;
+    font-weight: bolder;
+    color: white;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.form-title {
+    font-weight: bolder;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.alert {
+    left: 380px;
+    width: 300px;
+    font-weight: bolder;
+}
