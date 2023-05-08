@@ -1,0 +1,8 @@
+/node_modules/
+/.idea/
+/.vscode/
+/*.sqlite
+/test.sqlite
+.angular
+/models/test.sqlite
+/dist/
