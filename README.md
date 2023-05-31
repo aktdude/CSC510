@@ -5,6 +5,7 @@
 ![Statements](coverage/badge-statements.svg)
 
 # CSC510 SE Project: Online Classroom
+This is Software Engineering at the graduate level.
 
 ## Team
 
@@ -26,21 +27,6 @@ In this application, there are three roles: Admin, Teacher, and Student.
 This project is developed using the following tool:
 - This project utilizes a NodeJS backend utilizing an Express framework.
 - The frontend of the Project is developed using HTML, CSS, and TypeScript through the Angular front end.
-
-**FOR GRADING**: The scenarios for this project are based on this following PowerPoint: https://docs.google.com/presentation/d/1zmKTatbqiNn-THS4n9kvvlkrjHaVu_oTuYpLMYuJ_yw/edit?usp=sharing
-
-**Documentation of Changes**:
-1. Feature 1:
-- Added additional fields for the Admin to fill out when creating a course. The new fields are Professor ID (instead of Professor name), Max number of seats, course description, teaching method, course credits, course term, and course time.
-- There is no checkboxes for selecting Days of the Week, instead all of the information is through a drop down menu with preset Days of the Week.
-- There are now preset times for start and end time of a class.
-
-2. Feature 2:
-- Credits are displayed as well when a Student is on the "Enroll a Class" page.
-
-3. Feature 3:
-- The "My Current Courses" tab is instead replaced with a "View Class Details" button.
-- There is no "View Course Information" button, but a Tab that shows the course information and course roster.
 
 ## Installation
 Make sure that you have NodeJS installed on your computer. To install, please go to:
