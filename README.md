@@ -5,7 +5,7 @@
 ![Statements](coverage/badge-statements.svg)
 
 # CSC510 SE Project: Online Classroom
-This is Software Engineering at the graduate level.
+This is Software Engineering at the graduate level. There are pictures below showing the application and beneath that is installation information.
 
 ## Team
 
@@ -27,6 +27,24 @@ In this application, there are three roles: Admin, Teacher, and Student.
 This project is developed using the following tool:
 - This project utilizes a NodeJS backend utilizing an Express framework.
 - The frontend of the Project is developed using HTML, CSS, and TypeScript through the Angular front end.
+
+### Admin Home Screen:
+![Admin Home Screen](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/2a517466-a32a-40d8-bdbc-3d47143b6401)
+
+### Teacher Home Screen:
+![Teacher Home Screen](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/e13c85b2-f904-4711-aa61-e779361fa5c6)
+
+### Student Home Screen:
+![Student Home Screen](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/4fc9178f-1f59-47b0-a6ff-33dc15abb259)
+
+### Class Details Page:
+![Class Details](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/e50efc09-e86b-4818-a72d-e6c26f76f5d4)
+
+### Add Student to Class:
+![Add Student to Class](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/0ef1862f-fe30-47da-8dc8-5436471859ae)
+
+### Create Course:
+![Create Course](https://github.com/alex-taylor458/CSC510-SoftwareEngineering/assets/40243091/683a9405-f0a0-44d8-931c-1809bd0ed72f)
 
 ## Installation
 Make sure that you have NodeJS installed on your computer. To install, please go to:
@@ -106,9 +124,4 @@ You should see:
 ```bash
 npm test
 ````
-## Angular Commands (For Developers)
 
-Adding a new Angular component
-```bash
-ng generate component <component-name>
-```
